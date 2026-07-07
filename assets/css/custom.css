@@ -1,0 +1,58 @@
+/* 全局深空配色变量 */
+:root {
+    --bg: #090b16;
+    --bg-secondary: #101322;
+    --text: #d0d6f0;
+    --text-muted: #949cb8;
+    --accent: #8b5cf6;
+    --border: rgba(124, 58, 237, 0.2);
+}
+.dark {
+    --bg: #090b16 !important;
+    --bg-secondary: #101322 !important;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+/* 文章卡片、代码块美化 */
+.post-entry, .single-post, .term-card, .pagination {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    box-shadow: 0 0 12px rgba(124, 58, 237, 0.08);
+}
+pre, code {
+    background: #0c0e1c;
+    border: 1px solid var(--border);
+}
+
+/* 链接星空发光 hover 效果 */
+a {
+    color: var(--accent);
+}
+a:hover {
+    text-shadow: 0 0 8px rgba(139, 92, 246, 0.4);
+}
+
+/* 美化滚动条、导航栏、页脚 */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 3px;
+}
+.nav-bar {
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 0 10px rgba(124, 58, 237, 0.06);
+}
+.footer {
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+}
