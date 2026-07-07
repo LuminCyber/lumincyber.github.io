@@ -1,0 +1,13 @@
+baseURL = "https://lumincyber.com/"
+locale = "zh-cn"
+title = "LuminCyber | 人生档案与技术记录"
+theme = "PaperMod"
+canonifyURLs = true
+outputFormats.RSS = {baseName = "feed"}
+
+[params]
+homeInfoParams = {
+    Title = "LuminCyber",
+    Content = "记录思想、自传、技术成长的数字档案馆"
+}
+encryptShortcode = true
