@@ -11,3 +11,28 @@ homeInfoParams = {
     Content = "记录思想、自传、技术成长的数字档案馆"
 }
 encryptShortcode = true
+[params]
+# 原有配置保留，新增下面全部
+  # 顶部导航菜单
+  menu = [
+    { name = "首页", url = "/", weight = 1 },
+    { name = "文章", url = "/posts/", weight = 2 },
+    { name = "标签", url = "/tags/", weight = 3 },
+    { name = "关于我", url = "/about/", weight = 4 }
+  ]
+  # 开启首页文章卡片展示
+  homeInfoParams = {
+    Title = "LuminCyber",
+    Content = "记录思想、自传、技术成长的数字档案馆"
+  }
+  # 首页展示最近6篇文章卡片
+  ShowRecentPosts = 6
+  # 开启站内搜索框
+  ShowSearch = true
+  # 显示标签云
+  ShowTagsCloud = true
+  # 页脚版权信息
+  footerText = "© 2026 LuminCyber | Powered by Hugo & PaperMod"
+  # 阅读时长、字数统计
+  ShowReadingTime = true
+  ShowWordCount = true
