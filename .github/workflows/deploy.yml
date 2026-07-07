@@ -1,0 +1,25 @@
+name: Build & Deploy Hugo
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 拉取源码与主题子模块
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+      - name: 安装Hugo扩展版
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: latest
+          extended: true
+      - name: 编译静态网页
+        run: hugo --minify
+      - name: 部署至gh-pages分支
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          cname: lumincyber.com
