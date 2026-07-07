@@ -1,36 +1,300 @@
-baseURL = "https://lumincyber.com/"
-locale = "zh-cn"
-title = "LuminCyber | 人生档案与技术记录"
+archetypedir = 'archetypes'
+assetdir = 'assets'
+baseURL = 'https://lumincyber.com/'
+canonifyurls = true
+capitalizelisttitles = true
+contentdir = 'content'
+datadir = 'data'
+defaultcontentlanguage = 'zh-cn'
+defaultoutputformat = 'html'
+environment = 'production'
+i18ndir = 'i18n'
+layoutdir = 'layouts'
+locale = 'zh-cn'
+pluralizelisttitles = true
+publishdir = 'public'
+resourcedir = 'resources'
+staticdir = ['static']
+summarylength = 70
 theme = "PaperMod"
-canonifyURLs = true
-outputFormats.RSS = {baseName = "feed"}
+themesdir = 'themes'
+timeout = '60s'
+title = 'LuminCyber | 人生档案与技术记录'
+titlecasestyle = 'AP'
 
-# 只保留唯一一处 [params]
+[author]
+[build]
+  useresourcecachewhen = 'fallback'
+  [[build.cachebusters]]
+    source = '(postcss|tailwind)\.config\.(js|mjs|cjs)'
+    target = '(css|styles|scss|sass)'
+
+[caches]
+  [caches.assets]
+    dir = ':resourceDir/_gen'
+    maxage = -1
+  [caches.getresource]
+    dir = ':cacheDir/:project'
+    maxage = -1
+  [caches.images]
+    dir = ':resourceDir/_gen'
+    maxage = -1
+  [caches.misc]
+    dir = ':cacheDir/:project'
+    maxage = -1
+  [caches.modulegitinfo]
+    dir = ':cacheDir/modules'
+    maxage = '24h'
+  [caches.modulequeries]
+    dir = ':cacheDir/modules'
+    maxage = '24h'
+  [caches.modules]
+    dir = ':cacheDir/modules'
+    maxage = -1
+
+[contenttypes]
+  [contenttypes.'text/asciidoc']
+  [contenttypes.'text/html']
+  [contenttypes.'text/markdown']
+  [contenttypes.'text/org']
+  [contenttypes.'text/pandoc']
+  [contenttypes.'text/rst']
+
+[deployment]
+  invalidatecdn = true
+  maxdeletes = 256
+  workers = 10
+
+[frontmatter]
+  date = ['date', 'publishdate', 'pubdate', 'published', 'lastmod', 'modified']
+  expirydate = ['expirydate', 'unpublishdate']
+  lastmod = [':git', 'lastmod', 'modified', 'date', 'publishdate', 'pubdate', 'published']
+  publishdate = ['publishdate', 'pubdate', 'published', 'date']
+
+[httpcache]
+  respectcachecontrolnostoreinrequest = true
+  [httpcache.cache]
+    [httpcache.cache.for]
+      excludes = ['**']
+  [[httpcache.polls]]
+    disable = true
+    high = '0s'
+    low = '0s'
+    [httpcache.polls.for]
+      includes = ['**']
+
+[imaging]
+  anchor = 'smart'
+  bgcolor = 'ffffff'
+  resamplefilter = 'box'
+  [imaging.avif]
+    compression = 'lossy'
+    encoderspeed = 10
+    hint = 'photo'
+    quality = 60
+  [imaging.exif]
+    excludefields = 'GPS|Exif|Exposure[M|P|B]|Contrast|Resolution|Sharp|JPEG|Metering|Sensing|Saturation|ColorSpace|Flash|WhiteBalance'
+  [imaging.jpeg]
+    quality = 75
+  [imaging.meta]
+    fields = ['! *{GPS,Exif,Exposure[MPB],Contrast,Resolution,Sharp,JPEG,Metering,Sensing,Saturation,ColorSpace,Flash,WhiteBalance}*']
+    sources = ['exif', 'iptc']
+  [imaging.webp]
+    compression = 'lossy'
+    hint = 'photo'
+    method = 2
+    quality = 75
+
+[markup]
+  defaultmarkdownhandler = 'goldmark'
+  [markup.asciidocext]
+    backend = 'html5'
+    failurelevel = 'fatal'
+    noheaderorfooter = true
+    safemode = 'unsafe'
+    [markup.asciidocext.attributes]
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      definitionlist = true
+      linkify = true
+      linkifyprotocol = 'https'
+      strikethrough = true
+      table = true
+      tasklist = true
+      [markup.goldmark.extensions.cjk]
+        eastasianlinebreaksstyle = 'simple'
+      [markup.goldmark.extensions.footnote]
+        backlinkhtml = '&#x21a9;&#xfe0e;'
+        enable = true
+      [markup.goldmark.extensions.typographer]
+        apostrophe = '&rsquo;'
+        ellipsis = '&hellip;'
+        emdash = '&mdash;'
+        endash = '&ndash;'
+        leftanglequote = '&laquo;'
+        leftdoublequote = '&ldquo;'
+        leftsinglequote = '&lsquo;'
+        rightanglequote = '&raquo;'
+        rightdoublequote = '&rdquo;'
+        rightsinglequote = '&rsquo;'
+    [markup.goldmark.parser]
+      autoheadingid = true
+      autoidtype = 'github'
+      wrapstandaloneimagewithinparagraph = true
+      [markup.goldmark.parser.attribute]
+        title = true
+    [markup.goldmark.renderhooks]
+      [markup.goldmark.renderhooks.image]
+        useembedded = 'auto'
+      [markup.goldmark.renderhooks.link]
+        useembedded = 'auto'
+  [markup.highlight]
+    codefences = true
+    linenostart = 1
+    linenumbersintable = true
+    noclasses = true
+    style = 'monokai'
+    tabwidth = 4
+    wrapperclass = 'highlight'
+  [markup.rst]
+    syntaxhighlight = 'long'
+  [markup.tableofcontents]
+    endlevel = 3
+    startlevel = 2
+
+[mediatypes]
+[minify]
+  [minify.tdewolff]
+    [minify.tdewolff.html]
+      keepdefaultattrvals = true
+      keepdocumenttags = true
+      keependtags = true
+      keepspecialcomments = true
+      templatedelims = ['', '']
+    [minify.tdewolff.js]
+      version = 2022
+    [minify.tdewolff.svg]
+      keepnamespaces = ['', 'x-bind']
+
+[module]
+  noproxy = 'none'
+  private = '*.*'
+  proxy = 'direct'
+  workspace = 'off'
+  [[module.imports]]
+    path = 'PaperMod'
+
+[outputformats]
+  [outputformats.404]
+    ishtml = true
+    mediatype = 'text/html'
+    notalternative = true
+    permalinkable = true
+    ugly = true
+  [outputformats.html]
+    basename = 'index'
+    ishtml = true
+    mediatype = 'text/html'
+    permalinkable = true
+    rel = 'canonical'
+    weight = 10
+  [outputformats.rss]
+    basename = 'feed'
+    mediatype = 'application/rss+xml'
+    nougly = true
+    rel = 'alternate'
+
+[outputs]
+  home = ['html', 'rss']
+  page = ['html']
+  section = ['html', 'rss']
+  taxonomy = ['html', 'rss']
+  term = ['html', 'rss']
+
+[page]
+  nextprevinsectionsortorder = 'desc'
+  nextprevsortorder = 'desc'
+
+[pagination]
+  pagersize = 10
+  path = 'page'
+
 [params]
-encryptShortcode = true
+  encryptShortcode = true
+  footerText = '© 2026 LuminCyber | Powered by Hugo & PaperMod'
+  ShowReadingTime = true
+  ShowRecentPosts = 6
+  ShowSearch = true
+  ShowTagsCloud = true
+  ShowWordCount = true
 
-# 首页欢迎信息
-homeInfoParams = {
-    Title = "LuminCyber",
+  [params.homeInfoParams]
+    Title = "LuminCyber"
     Content = "记录思想、自传、技术成长的数字档案馆"
-}
 
-# 顶部导航菜单
-menu = [
-    { name = "首页", url = "/", weight = 1 },
-    { name = "文章", url = "/posts/", weight = 2 },
-    { name = "标签", url = "/tags/", weight = 3 },
-    { name = "关于我", url = "/about/", weight = 4 }
-]
+  [[params.menu]]
+    name = "首页"
+    url = "/"
+    weight = 1
+  [[params.menu]]
+    name = "文章"
+    url = "/posts/"
+    weight = 2
+  [[params.menu]]
+    name = "标签"
+    url = "/tags/"
+    weight = 3
+  [[params.menu]]
+    name = "关于我"
+    url = "/about/"
+    weight = 4
 
-# 首页展示最近6篇文章卡片
-ShowRecentPosts = 6
-# 开启站内搜索框
-ShowSearch = true
-# 显示标签云
-ShowTagsCloud = true
-# 页脚版权信息
-footerText = "© 2026 LuminCyber | Powered by Hugo & PaperMod"
-# 阅读时长、字数统计
-ShowReadingTime = true
-ShowWordCount = true
+[privacy]
+  [privacy.googleanalytics]
+    respectdonottrack = true
+
+[related]
+  threshold = 80
+  [[related.indices]]
+    name = 'keywords'
+    type = 'basic'
+    weight = 100
+  [[related.indices]]
+    name = 'date'
+    type = 'basic'
+    weight = 10
+  [[related.indices]]
+    name = 'tags'
+    type = 'basic'
+    weight = 80
+
+[security]
+  allowcontent = ['! ^text/html$']
+  [security.exec]
+    allow = ['^(dart-)?sass(-embedded)?$', '^go$', '^git$', '^node$', '^postcss$', '^tailwindcss$']
+    osenv = ['(?i)^((HTTPS?|NO)_PROXY|PATH(EXT)?|APPDATA|TE?MP|TERM|GO\w+|(XDG_CONFIG_)?HOME|USERPROFILE|SSH_AUTH_SOCK|DISPLAY|LANG|SYSTEMDRIVE|PROGRAMDATA)$']
+  [security.funcs]
+    getenv = ['^HUGO_', '^CI$']
+  [security.http]
+    methods = ['(?i)GET|POST']
+    urls = ['(?i)^https?://[a-z0-9]', '! ^https?://\d+\.', '! (?i)localhost', '! (?i)^https?://[^/?#]*@']
+  [security.node]
+    [security.node.permissions]
+      allowaddons = ['tailwindcss']
+      allowchildprocess = ['tailwindcss']
+      allowread = ['.']
+      allowworker = ['tailwindcss']
+
+[services]
+  [services.rss]
+    limit = -1
+
+[sitemap]
+  filename = 'sitemap.xml'
+  priority = -1
+
+[taxonomies]
+  category = 'categories'
+  tag = 'tags'
+
+[uglyurls]
